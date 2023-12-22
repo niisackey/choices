@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <title>Choices</title>
+</head>
+<body>
+    <div class="text">
+        <h1>University Choice Entry Portal</h1>
+    </div>
+    <section class="area">
+        <form action="" method="get" id="form">
+            <input placeholder="University" class="input" name="University" type="text" required><br>
+
+            <input placeholder="GRE Req" class="input" name="GRE" type="text" required><br>
+
+            <input placeholder="Verbal Reasoning" class="input" name="Verbal" type="text" required><br>
+
+            <input placeholder="Analytic Writing" class="input" name="Analytic Writing" type="text" required><br>
+
+            <input placeholder="Quantitative Reasoning" class="input" name="Quantitative" type="text" required><br>
+
+            <input placeholder="GPA" class="input" text="text" name="GPA" required><br>
+            <input placeholder="LAST 2 YEARS GPA" class="input" type="text" name="GPA last 2" required><br>
+
+            <input placeholder="Conditional Admission" class="input" type="text" name="Conditional Admission" required><br><br>
+
+          
+
+
+            <input type="submit" value="Submit" class="button">
+        </form>
+    </section>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbw4qqs0j0tz_EnRFfsRIbEA48wyE2B6NHJNQsWOrLEY1qrdAi-5IOXQGfzjK4WE-c1l/exec';
+        const form = document.querySelector('#form');
+    
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+    
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                    console.log('Success!', response);
+                    // Clear the form
+                    form.reset();
+                    // Display a success message using an alert
+                    alert('Thank you for your submission!');
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    // Display an error message using an alert
+                    alert('Submission failed. Please try again.');
+                });
+        });
+    </script>
+</body>
+</html>
